@@ -17,10 +17,21 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: [
-    process.env.CLIENT_URL || 'http://localhost:3000',
-    process.env.ADMIN_URL || 'http://localhost:3001',
-  ],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    const allowed = [
+      process.env.CLIENT_URL, 
+      process.env.ADMIN_URL, 
+      'http://localhost:3000', 
+      'http://localhost:3001'
+    ].filter(Boolean).map(url => url.replace(/\/$/, '')); // remove trailing slashes
+    
+    if (allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy violation'));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());

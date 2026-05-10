@@ -46,7 +46,7 @@ router.post('/', protect, adminOnly, upload.array('images', 5), async (req, res)
     isFeatured: isFeatured || false,
     images,
     tags: tags ? (Array.isArray(tags) ? tags : tags.split(',').map(t => t.trim())) : [],
-    currency: currency || 'USD',
+    currency: currency || 'LKR',
   });
   res.status(201).json({ success: true, data: await artwork.populate('category', 'name slug') });
 });

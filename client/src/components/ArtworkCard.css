@@ -4,7 +4,7 @@
   border: 1px solid var(--border); transition: var(--transition);
 }
 .artwork-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: var(--shadow-gold); }
-.artwork-card-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+.artwork-card-img-wrap { position: relative; overflow: hidden; aspect-ratio: 1/1; }
 .artwork-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .artwork-card:hover .artwork-card-img-wrap img { transform: scale(1.07); }
 .artwork-card-placeholder {

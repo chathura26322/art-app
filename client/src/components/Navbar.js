@@ -39,8 +39,8 @@ export default function Navbar() {
             </li>
           ) : (
             <li>
-              <Link to="/login" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>
-                Sign In
+              <Link to="/login" className="btn btn-outline btn-sm" onClick={() => setMenuOpen(false)}>
+                <FiUser size={14}/> Sign In
               </Link>
             </li>
           )}

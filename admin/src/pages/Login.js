@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import toast from 'react-hot-toast';
 
+import { GoogleLogin } from '@react-oauth/google';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAdminAuth();
+  const { login, loginWithGoogle } = useAdminAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,15 @@ export default function Login() {
       toast.error(err.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      await loginWithGoogle(credentialResponse.credential);
+      toast.success('Admin login successful!');
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Google login failed');
     }
   };
 
@@ -56,6 +67,21 @@ export default function Login() {
             {loading ? 'Logging in...' : 'Login to Dashboard'}
           </button>
         </form>
+
+        <div style={{ display: 'flex', alignItems: 'center', margin: '20px 0' }}>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+          <span style={{ padding: '0 10px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>OR</span>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => toast.error('Google login failed')}
+            theme="filled_black"
+            shape="pill"
+          />
+        </div>
       </div>
       <style jsx>{`
         .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }

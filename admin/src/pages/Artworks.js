@@ -70,7 +70,7 @@ export default function Artworks() {
                 </td>
                 <td style={{fontWeight: 600}}>{art.title}</td>
                 <td><span className="badge badge-pending" style={{background: 'rgba(255,255,255,0.05)', color: '#a89880'}}>{art.category?.name}</span></td>
-                <td style={{color: '#d4a853', fontWeight: 600}}>{art.currency} {Number(art.price).toLocaleString()}</td>
+                <td style={{color: '#d4a853', fontWeight: 600}}>Rs. {Number(art.price).toLocaleString()}</td>
                 <td>
                   <span className={`badge ${art.isAvailable ? 'badge-available' : 'badge-sold'}`}>
                     {art.isAvailable ? 'Available' : 'Sold'}

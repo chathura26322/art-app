@@ -28,8 +28,16 @@ export const AdminAuthProvider = ({ children }) => {
     setAdmin(null);
   };
 
+  const loginWithGoogle = async (credential) => {
+    const { data } = await api.post('/auth/admin/google', { credential });
+    localStorage.setItem('laki_admin_token', data.token);
+    localStorage.setItem('laki_admin_user', JSON.stringify(data.data));
+    setAdmin(data.data);
+    return data.data;
+  };
+
   return (
-    <AdminAuthContext.Provider value={{ admin, loading, login, logout }}>
+    <AdminAuthContext.Provider value={{ admin, loading, login, loginWithGoogle, logout }}>
       {children}
     </AdminAuthContext.Provider>
   );

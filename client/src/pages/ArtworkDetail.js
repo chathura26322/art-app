@@ -52,7 +52,7 @@ export default function ArtworkDetail() {
   }, [id]);
 
   const wa = settings?.whatsappNumber?.replace(/\D/g, '');
-  const waMsg = artwork ? encodeURIComponent(`Hi! I'm interested in buying "${artwork.title}" priced at ${artwork.currency} ${artwork.price}. Is it still available?`) : '';
+  const waMsg = artwork ? encodeURIComponent(`Hi! I'm interested in buying "${artwork.title}" priced at Rs. ${artwork.price}. Is it still available?`) : '';
 
   const avgRating = reviews.length ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1) : null;
 
@@ -120,7 +120,7 @@ export default function ArtworkDetail() {
             )}
 
             <div className="detail-price">
-              {artwork.currency || 'USD'} <strong>{Number(artwork.price).toLocaleString()}</strong>
+              Rs. <strong>{Number(artwork.price).toLocaleString()}</strong>
             </div>
 
             <p className="detail-desc">{artwork.description}</p>

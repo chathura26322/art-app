@@ -13,7 +13,6 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'laki-arts',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
-    transformation: [{ width: 1200, quality: 'auto', fetch_format: 'auto' }],
   },
 });
 

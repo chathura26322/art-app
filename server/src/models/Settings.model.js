@@ -10,7 +10,7 @@ const settingsSchema = new mongoose.Schema({
     instagram: { type: String, default: '' },
     facebook: { type: String, default: '' },
   },
-  currency: { type: String, default: 'USD' },
+  currency: { type: String, default: 'LKR' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Settings', settingsSchema);

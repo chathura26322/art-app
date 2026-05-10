@@ -89,8 +89,11 @@ export default function Dashboard() {
                 <XAxis dataKey="name" stroke="#6b6058" fontSize={12} />
                 <YAxis stroke="#6b6058" fontSize={12} />
                 <Tooltip 
+                  cursor={{ fill: 'rgba(212,168,83,0.05)' }}
                   contentStyle={{ background: '#1a1a1a', border: '1px solid #d4a853', borderRadius: '8px' }}
-                  itemStyle={{ color: '#d4a853' }}
+                  itemStyle={{ color: '#d4a853', fontWeight: 600 }}
+                  labelStyle={{ color: '#f0ebe0', marginBottom: '4px' }}
+                  formatter={(value) => [value, 'Total']}
                 />
                 <Bar dataKey="count" fill="#d4a853" radius={[4, 4, 0, 0]} />
               </BarChart>

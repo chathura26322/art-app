@@ -36,8 +36,16 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const loginWithGoogle = async (credential) => {
+    const { data } = await api.post('/auth/google', { credential });
+    localStorage.setItem('laki_token', data.token);
+    localStorage.setItem('laki_user', JSON.stringify(data.data));
+    setUser(data.data);
+    return data.data;
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, loginWithGoogle, logout }}>
       {children}
     </AuthContext.Provider>
   );

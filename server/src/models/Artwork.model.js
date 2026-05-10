@@ -4,7 +4,7 @@ const artworkSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
   description: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
-  currency: { type: String, default: 'USD' },
+  currency: { type: String, default: 'LKR' },
   dimensions: { type: String, default: '' },
   medium: { type: String, default: '' },
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },

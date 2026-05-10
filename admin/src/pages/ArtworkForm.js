@@ -123,7 +123,7 @@ export default function ArtworkForm() {
               </select>
             </div>
             <div className="form-group">
-              <label>Price (USD)</label>
+              <label>Price (Rs.)</label>
               <input 
                 type="number" className="form-control" 
                 value={form.price} onChange={e => setForm({...form, price: e.target.value})}

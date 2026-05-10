@@ -20,17 +20,17 @@
 .nav-links {
   display: flex; align-items: center; gap: 32px; list-style: none;
 }
-.nav-links a {
+.nav-links a:not(.btn) {
   color: var(--text-secondary); font-size: 0.92rem; font-weight: 500;
   transition: color 0.2s; position: relative; padding-bottom: 2px;
 }
-.nav-links a::after {
+.nav-links a:not(.btn)::after {
   content: ''; position: absolute; bottom: -2px; left: 0;
   width: 0; height: 1.5px; background: var(--gold);
   transition: width 0.25s ease;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a:not(.btn):hover, .nav-links a:not(.btn).active { color: var(--gold); }
+.nav-links a:not(.btn):hover::after, .nav-links a:not(.btn).active::after { width: 100%; }
 .nav-user { display: flex; align-items: center; gap: 12px; }
 .nav-username {
   display: flex; align-items: center; gap: 6px;

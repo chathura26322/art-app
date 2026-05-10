@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     Promise.all([
       api.get('/settings'),
-      api.get('/artworks?featured=true&limit=6'),
+      api.get('/artworks?featured=true&limit=8'),
     ]).then(([s, a]) => {
       setSettings(s.data.data);
       setFeatured(a.data.data);
@@ -78,7 +78,7 @@ export default function Home() {
               <p>Artworks coming soon — check back later!</p>
             </div>
           ) : (
-            <div className="grid-3 featured-grid">
+            <div className="grid-4 featured-grid">
               {featured.map(a => <ArtworkCard key={a._id} artwork={a}/>)}
             </div>
           )}

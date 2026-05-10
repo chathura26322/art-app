@@ -4,8 +4,10 @@ import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import './Auth.css';
 
+import { GoogleLogin } from '@react-oauth/google';
+
 export default function Register() {
-  const { register } = useAuth();
+  const { register, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
@@ -23,6 +25,16 @@ export default function Register() {
     } catch (err) {
       toast.error(err.response?.data?.message || 'Registration failed');
     } finally { setLoading(false); }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      await loginWithGoogle(credentialResponse.credential);
+      toast.success('Account created! Welcome to Laki Arts 🎨');
+      navigate('/gallery');
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Google registration failed');
+    }
   };
 
   return (
@@ -53,6 +65,23 @@ export default function Register() {
             {loading ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
+        
+        <div style={{ display: 'flex', alignItems: 'center', margin: '20px 0' }}>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+          <span style={{ padding: '0 10px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>OR</span>
+          <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => toast.error('Google registration failed')}
+            theme="filled_black"
+            shape="pill"
+            text="signup_with"
+          />
+        </div>
+
         <p className="auth-switch">Already have an account? <Link to="/login" className="gold-text">Sign In</Link></p>
       </div>
     </div>

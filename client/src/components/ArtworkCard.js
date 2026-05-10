@@ -27,7 +27,7 @@ export default function ArtworkCard({ artwork }) {
         <h3 className="artwork-card-title">{artwork.title}</h3>
         <div className="artwork-card-bottom">
           <span className="artwork-card-price">
-            {artwork.currency || 'USD'} {Number(artwork.price).toLocaleString()}
+            Rs. {Number(artwork.price).toLocaleString()}
           </span>
         </div>
       </div>

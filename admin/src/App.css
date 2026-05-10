@@ -1,0 +1,25 @@
+.admin-app { display: flex; min-height: 100vh; }
+.admin-main { flex: 1; display: flex; flex-direction: column; background: var(--bg); }
+.admin-content { padding: 30px; max-width: 1200px; width: 100%; margin: 0 auto; }
+
+/* Table Styles */
+.table-container { 
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); 
+  overflow: hidden; margin-top: 20px;
+}
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 16px; font-size: 0.82rem; color: var(--text-sec); border-bottom: 1px solid var(--border); background: #151515; }
+td { padding: 16px; font-size: 0.88rem; border-bottom: 1px solid var(--border); color: var(--text); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(212,168,83,0.02); }
+
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.page-title { font-size: 1.6rem; color: var(--gold); }
+
+.img-preview-sm { width: 45px; height: 45px; border-radius: 6px; object-fit: cover; border: 1px solid var(--border); }
+.actions-cell { display: flex; gap: 8px; }
+
+@media (max-width: 768px) {
+  .admin-content { padding: 20px 15px; }
+  .table-container { overflow-x: auto; }
+}

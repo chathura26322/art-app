@@ -1,0 +1,52 @@
+.detail-page { padding: 100px 0 80px; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: none; color: var(--text-secondary);
+  font-size: 0.9rem; margin-bottom: 36px; transition: color 0.2s;
+}
+.back-btn:hover { color: var(--gold); }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 80px; }
+.main-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; }
+.main-image img { width: 100%; height: 100%; object-fit: cover; }
+.img-placeholder { width: 100%; height: 100%; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+.thumb-row { display: flex; gap: 10px; margin-top: 12px; }
+.thumb { width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 2px solid transparent; background: none; padding: 0; transition: border-color 0.2s; }
+.thumb.active { border-color: var(--gold); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.detail-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.badge-cat { background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border); }
+.detail-title { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 12px; }
+.detail-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--text-secondary); font-size: 0.88rem; }
+.detail-price { font-size: 1.8rem; font-weight: 700; color: var(--gold); margin-bottom: 20px; }
+.detail-desc { color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; font-size: 0.98rem; }
+.detail-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; padding: 20px; background: var(--bg-secondary); border-radius: var(--radius); border: 1px solid var(--border); }
+.detail-meta div span { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
+.detail-meta div p { font-size: 0.92rem; color: var(--text-primary); margin-top: 4px; font-weight: 500; }
+.detail-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; color: var(--text-muted); font-size: 0.85rem; }
+.tag { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 100px; padding: 3px 10px; font-size: 0.8rem; color: var(--text-secondary); }
+.detail-actions { margin-top: 24px; }
+.sold-notice { padding: 16px 20px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--radius); color: #f87171; font-size: 0.92rem; }
+
+/* Reviews */
+.reviews-section { border-top: 1px solid var(--border); padding-top: 60px; }
+.reviews-section .section-title { margin-bottom: 32px; font-size: 1.8rem; }
+.no-reviews { color: var(--text-muted); margin-bottom: 40px; font-style: italic; }
+.reviews-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+.review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.review-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #0f0f0f; font-size: 1rem; flex-shrink: 0; }
+.review-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.review-meta { display: flex; align-items: center; gap: 10px; }
+.review-meta span { font-size: 0.78rem; color: var(--text-muted); }
+.review-text { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
+.review-form-wrap { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; max-width: 600px; }
+.review-form-wrap h3 { font-size: 1.2rem; margin-bottom: 20px; }
+.star-picker { display: flex; gap: 4px; }
+.star-btn { background: none; border: none; padding: 4px; transition: transform 0.1s; }
+.star-btn:hover { transform: scale(1.2); }
+.login-prompt { color: var(--text-secondary); font-size: 0.95rem; }
+.login-prompt a { font-weight: 600; }
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; gap: 36px; }
+  .detail-meta { grid-template-columns: repeat(2, 1fr); }
+}

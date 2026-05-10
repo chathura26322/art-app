@@ -1,0 +1,39 @@
+.artwork-card {
+  display: block; border-radius: var(--radius-lg);
+  overflow: hidden; background: var(--bg-card);
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.artwork-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: var(--shadow-gold); }
+.artwork-card-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+.artwork-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.artwork-card:hover .artwork-card-img-wrap img { transform: scale(1.07); }
+.artwork-card-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-secondary); font-size: 3rem;
+}
+.artwork-card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.artwork-card:hover .artwork-card-overlay { opacity: 1; }
+.artwork-card-view {
+  display: flex; align-items: center; gap: 6px;
+  color: #fff; background: rgba(212,168,83,0.85);
+  padding: 10px 22px; border-radius: 100px;
+  font-weight: 600; font-size: 0.9rem;
+}
+.artwork-card-badges {
+  position: absolute; top: 12px; left: 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.artwork-card-info { padding: 16px; }
+.artwork-card-category { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+.artwork-card-title {
+  font-size: 1rem; font-weight: 600; margin: 6px 0 10px;
+  color: var(--text-primary); line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.artwork-card-bottom { display: flex; align-items: center; justify-content: space-between; }
+.artwork-card-price { font-size: 1.05rem; font-weight: 700; color: var(--gold); }

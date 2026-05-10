@@ -1,0 +1,97 @@
+.home { overflow: hidden; }
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,83,0.08) 0%, transparent 70%);
+  padding-top: 80px;
+}
+.hero-bg-art { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.floating-icon {
+  position: absolute; left: var(--x); top: 20%;
+  font-size: 2.5rem; opacity: 0.06;
+  animation: floatUp 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+.hero-content { position: relative; z-index: 1; padding: 60px 0; max-width: 700px; }
+.hero-tag {
+  display: inline-block; color: var(--gold); font-size: 0.82rem;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px; padding: 6px 14px;
+  background: rgba(212,168,83,0.08); border-radius: 100px; border: 1px solid var(--border);
+}
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; line-height: 1.08;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #f0ebe0, #d4a853);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub { font-size: 1.15rem; color: var(--text-secondary); max-width: 480px; margin-bottom: 40px; line-height: 1.7; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-stats { display: flex; align-items: center; gap: 32px; }
+.stat span { font-size: 1.6rem; font-weight: 700; color: var(--gold); display: block; }
+.stat p { font-size: 0.8rem; color: var(--text-muted); }
+.stat-div { width: 1px; height: 36px; background: var(--border); }
+.hero-scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: 0.75rem; letter-spacing: 1px;
+}
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+/* Sections */
+.section { padding: 80px 0; }
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 40px;
+}
+.section-tag {
+  display: block; color: var(--gold); font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
+}
+
+/* Featured */
+.featured-grid { margin-top: 8px; }
+
+/* Empty */
+.empty-state { text-align: center; padding: 60px; color: var(--text-muted); }
+.empty-state span { font-size: 3rem; display: block; margin-bottom: 12px; }
+
+/* About Teaser */
+.about-teaser { background: var(--bg-secondary); }
+.about-teaser-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-desc { color: var(--text-secondary); line-height: 1.8; margin-bottom: 28px; font-size: 1.02rem; }
+.art-circle {
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,168,83,0.15), transparent);
+  border: 2px solid var(--border); display: flex; align-items: center;
+  justify-content: center; font-size: 6rem;
+  animation: pulse 4s ease-in-out infinite;
+  margin: 0 auto;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,83,0.1); }
+  50% { box-shadow: 0 0 40px 20px rgba(212,168,83,0.05); }
+}
+
+/* CTA */
+.cta-box {
+  background: linear-gradient(135deg, rgba(212,168,83,0.1), rgba(212,168,83,0.03));
+  border: 1px solid var(--border-hover); border-radius: var(--radius-lg);
+  padding: 60px; text-align: center;
+}
+.cta-box h2 { font-size: 2rem; margin-bottom: 12px; }
+.cta-box p { color: var(--text-secondary); margin-bottom: 28px; font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+  .hero-content { padding: 80px 0 40px; }
+  .about-teaser-inner { grid-template-columns: 1fr; gap: 40px; }
+  .art-circle { width: 200px; height: 200px; font-size: 4rem; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cta-box { padding: 40px 24px; }
+}

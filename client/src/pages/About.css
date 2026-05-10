@@ -1,0 +1,16 @@
+.about-page { padding-bottom: 80px; }
+.about-hero { padding: 140px 0 60px; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,168,83,0.07) 0%, transparent 70%); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+.about-visual { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.artist-circle { width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.15), transparent); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+.artist-name-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 28px; text-align: center; }
+.artist-name-card h3 { font-size: 1.2rem; color: var(--gold); }
+.artist-name-card p { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+.about-text h2 { font-size: 2rem; margin-bottom: 20px; }
+.about-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; font-size: 0.98rem; }
+.about-values { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+.value-card { display: flex; align-items: flex-start; gap: 16px; padding: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+.value-card span { font-size: 1.5rem; }
+.value-card h4 { font-size: 0.95rem; color: var(--gold); margin-bottom: 4px; }
+.value-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }

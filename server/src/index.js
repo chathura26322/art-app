@@ -17,24 +17,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    
-    // Allow any .vercel.app domain or localhost
-    if (origin.endsWith('.vercel.app') || origin.includes('localhost')) {
-      return callback(null, true);
-    }
-
-    const allowed = [process.env.CLIENT_URL, process.env.ADMIN_URL]
-      .filter(Boolean)
-      .map(url => url.replace(/\/$/, ''));
-
-    if (allowed.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS policy violation'));
-    }
-  },
+  origin: true,
   credentials: true,
   optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 }));

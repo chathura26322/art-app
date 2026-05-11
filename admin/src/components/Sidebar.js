@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
+  FiGrid, FiImage, FiFolder, FiMessageSquare, 
   FiUsers, FiSettings, FiLogOut, FiShield 
 } from 'react-icons/fi';
 import { useAdminAuth } from '../context/AdminAuthContext';

@@ -129,7 +129,7 @@ export default function Admins() {
             {admins.map(a => (
               <tr key={a._id}>
                 <td>
-                  <div style={{ display: 'flex', alignItems: center, gap: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div className="profile-avatar" style={{ width: '32px', height: '32px', fontSize: '0.9rem' }}>
                       {a.name.charAt(0)}
                     </div>

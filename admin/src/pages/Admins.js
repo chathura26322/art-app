@@ -143,12 +143,14 @@ export default function Admins() {
                 <td>
                   <span className="badge badge-pending"><FiShield size={10} /> Admin</span>
                 </td>
-                <td className="actions-cell">
-                  {a._id !== currentAdmin?._id && (
-                    <button className="btn-icon" onClick={() => handleDeleteAdmin(a._id)} title="Delete Admin">
-                      <FiTrash2 />
-                    </button>
-                  )}
+                <td>
+                  <div className="actions-cell">
+                    {a._id !== currentAdmin?._id && (
+                      <button className="btn-icon" onClick={() => handleDeleteAdmin(a._id)} title="Delete Admin">
+                        <FiTrash2 />
+                      </button>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}

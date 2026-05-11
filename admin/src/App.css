@@ -20,6 +20,8 @@ tr:hover td { background: rgba(212,168,83,0.02); }
 .actions-cell { display: flex; gap: 8px; }
 
 @media (max-width: 768px) {
+  .admin-app { flex-direction: column; }
+  .admin-main { padding-bottom: 70px; } /* Space for bottom nav */
   .admin-content { padding: 20px 15px; }
-  .table-container { overflow-x: auto; }
+  .table-container { overflow-x: auto; white-space: nowrap; }
 }

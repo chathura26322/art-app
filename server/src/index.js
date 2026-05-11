@@ -19,20 +19,24 @@ connectDB();
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    const allowed = [
-      process.env.CLIENT_URL, 
-      process.env.ADMIN_URL, 
-      'http://localhost:3000', 
-      'http://localhost:3001'
-    ].filter(Boolean).map(url => url.replace(/\/$/, '')); // remove trailing slashes
     
-    if (allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+    // Allow any .vercel.app domain or localhost
+    if (origin.endsWith('.vercel.app') || origin.includes('localhost')) {
+      return callback(null, true);
+    }
+
+    const allowed = [process.env.CLIENT_URL, process.env.ADMIN_URL]
+      .filter(Boolean)
+      .map(url => url.replace(/\/$/, ''));
+
+    if (allowed.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('CORS policy violation'));
     }
   },
   credentials: true,
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

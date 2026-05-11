@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
-  FiGrid, FiImage, FiFolder, FiMessageSquare, 
-  FiUsers, FiSettings, FiLogOut 
+  FiUsers, FiSettings, FiLogOut, FiShield 
 } from 'react-icons/fi';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import './Sidebar.css';
@@ -17,6 +16,7 @@ export default function Sidebar() {
     { to: '/reviews', icon: <FiMessageSquare />, label: 'Reviews' },
     { to: '/customers', icon: <FiUsers />, label: 'Customers' },
     { to: '/settings', icon: <FiSettings />, label: 'Settings' },
+    { to: '/admins', icon: <FiShield />, label: 'Administrators' },
   ];
 
   return (

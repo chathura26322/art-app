@@ -9,6 +9,7 @@ import Categories from './pages/Categories';
 import Reviews from './pages/Reviews';
 import Customers from './pages/Customers';
 import Settings from './pages/Settings';
+import Admins from './pages/Admins';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import './App.css';
@@ -39,6 +40,7 @@ function App() {
               <Route path="/reviews" element={<PrivateRoute><Reviews /></PrivateRoute>} />
               <Route path="/customers" element={<PrivateRoute><Customers /></PrivateRoute>} />
               <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
+              <Route path="/admins" element={<PrivateRoute><Admins /></PrivateRoute>} />
             </Routes>
           </div>
         </div>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model');
-const { generateToken, protect } = require('../middleware/auth.middleware');
+const { generateToken, protect, adminOnly } = require('../middleware/auth.middleware');
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -125,4 +125,54 @@ router.post('/admin/google', async (req, res) => {
   }
 });
 
+// @GET /api/auth/admins
+router.get('/admins', protect, adminOnly, async (req, res) => {
+  try {
+    const admins = await User.find({ role: 'admin' }).select('-password');
+    res.json({ success: true, data: admins });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+// @POST /api/auth/admin/register
+router.post('/admin/register', protect, adminOnly, async (req, res) => {
+  const { name, email, password } = req.body;
+  if (!name || !email || !password)
+    return res.status(400).json({ success: false, message: 'Please fill all fields' });
+
+  try {
+    const exists = await User.findOne({ email });
+    if (exists) return res.status(400).json({ success: false, message: 'Email already registered' });
+
+    const user = await User.create({ name, email, password, role: 'admin' });
+    res.status(201).json({
+      success: true,
+      data: { _id: user._id, name: user.name, email: user.email, role: user.role }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+// @DELETE /api/auth/admins/:id
+router.delete('/admins/:id', protect, adminOnly, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ success: false, message: 'Admin not found' });
+    if (user.role !== 'admin') return res.status(400).json({ success: false, message: 'User is not an admin' });
+    
+    // Prevent self-deletion
+    if (user._id.toString() === req.user._id.toString()) {
+      return res.status(400).json({ success: false, message: 'You cannot delete yourself' });
+    }
+
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: 'Admin removed successfully' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
 module.exports = router;
+
